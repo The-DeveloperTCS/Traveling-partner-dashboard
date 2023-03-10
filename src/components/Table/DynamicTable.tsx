@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
     Box,
@@ -16,6 +15,7 @@ import {
     Tooltip,
 } from '@mui/material'
 import { Edit, Delete, Download, Email } from '@mui/icons-material'
+import nodataImg from '../../assets/images/images/no_data.svg'
 
 declare global {
     interface IColumn {
@@ -49,6 +49,16 @@ export interface IDynamicTable<T> {
     onRowDelete?: (item: T) => void
     columns: IColumn[]
     isLoading: boolean
+    limit?: number
+    page?: number
+    total?: number
+    handlePageChange?: (
+        event: React.MouseEvent<HTMLButtonElement> | null,
+        newPage: number
+    ) => void
+    handleLimitChange?: (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => void
 }
 
 export const DynamicTable = <T extends IBase>({
@@ -57,27 +67,16 @@ export const DynamicTable = <T extends IBase>({
     onRowDelete,
     columns,
     isLoading,
+    handleLimitChange,
+    handlePageChange,
+    limit,
+    page,
+    total,
     ...rest
 }: IDynamicTable<T>): ReactNode => {
-    const [limit, setLimit] = useState(10)
-    const [page, setPage] = useState(0)
-
     const extendedColumns = columns.map((column) => {
         return { ...column, key: column.key.split('.') }
     })
-
-    const handleLimitChange = (
-        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ): void => {
-        setLimit(parseInt(event.target.value, 10))
-    }
-
-    const handlePageChange = (
-        event: React.MouseEvent<HTMLButtonElement> | null,
-        newPage: number
-    ): void => {
-        setPage(newPage)
-    }
 
     const generateCell = (
         column: {
@@ -148,62 +147,70 @@ export const DynamicTable = <T extends IBase>({
         )
     }
 
+    if (data.length === 0 && !isLoading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <img
+                    src={nodataImg}
+                    width="300px"
+                    height="300px"
+                    alt="no-data"
+                />
+            </div>
+        )
+    }
+
     return (
         <TableContainer component={Paper} {...rest}>
             <PerfectScrollbar>
-                <Box sx={{ minWidth: 1050 }}>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                {extendedColumns.map((column, index) => (
-                                    <TableCell
-                                        // eslint-disable-next-line react/no-array-index-key
-                                        key={`${index}`}
-                                        align={
-                                            column.key[0] === 'action'
-                                                ? 'center'
-                                                : 'left'
-                                        }
-                                    >
-                                        {column.name}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        </TableHead>
-                        {!isLoading && (
-                            <TableBody>
-                                {data
-                                    .slice(page * limit, page * limit + limit)
-                                    .map((item) => (
-                                        <TableRow
-                                            hover
-                                            key={item.id as string}
-                                            onClick={() => {
-                                                onRowClick?.(item)
-                                            }}
-                                        >
-                                            {extendedColumns.map((column) => (
-                                                <TableCell
-                                                    key={column.key.join('.')}
-                                                >
-                                                    {generateCell(column, item)}
-                                                </TableCell>
-                                            ))}
-                                        </TableRow>
+                <Table sx={{ minWidth: 650 }}>
+                    <TableHead>
+                        <TableRow>
+                            {extendedColumns.map((column, index) => (
+                                <TableCell
+                                    // eslint-disable-next-line react/no-array-index-key
+                                    key={`${index}`}
+                                    align={
+                                        column.key[0] === 'action'
+                                            ? 'center'
+                                            : 'left'
+                                    }
+                                >
+                                    {column.name}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                    </TableHead>
+                    {!isLoading && (
+                        <TableBody>
+                            {data.map((item) => (
+                                <TableRow
+                                    hover
+                                    key={item.id as string}
+                                    onClick={() => {
+                                        onRowClick?.(item)
+                                    }}
+                                    sx={{ cursor: 'pointer' }}
+                                >
+                                    {extendedColumns.map((column) => (
+                                        <TableCell key={column.key.join('.')}>
+                                            {generateCell(column, item)}
+                                        </TableCell>
                                     ))}
-                            </TableBody>
-                        )}
-                    </Table>
-                    {isLoading && (
-                        <Box sx={{ width: '100%' }}>
-                            <LinearProgress />
-                        </Box>
+                                </TableRow>
+                            ))}
+                        </TableBody>
                     )}
-                </Box>
+                </Table>
+                {isLoading && (
+                    <Box sx={{ width: '100%' }}>
+                        <LinearProgress />
+                    </Box>
+                )}
             </PerfectScrollbar>
             <TablePagination
                 component="div"
-                count={data.length}
+                count={total}
                 onPageChange={handlePageChange}
                 onRowsPerPageChange={handleLimitChange}
                 page={page}
