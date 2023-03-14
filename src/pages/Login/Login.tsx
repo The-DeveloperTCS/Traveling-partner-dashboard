@@ -43,7 +43,7 @@ function Login(): ReactNode {
     return (
         <>
             <Helmet>
-                <title>REACT STARTER</title>
+                <title>Traveling Partner</title>
             </Helmet>
             <Grid
                 container
