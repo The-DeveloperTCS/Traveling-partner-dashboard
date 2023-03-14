@@ -8,7 +8,7 @@ import SelectInput from '../../../components/Input/SelectInput'
 import Button from '../../../components/Buttons/Button'
 import roles from '../../../roles/roles.json'
 import { userSchema } from './schema'
-import { register } from '../../../services/user.services'
+// import { register } from '../../../services/user.services'
 import { Modal } from '../../../components/Modal/Modal'
 import {
     MessageContext,
@@ -22,9 +22,8 @@ const AddUser = ({
     onSuccess,
 }: IItemProps): ReactNode => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
-    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(
-        false
-    )
+    const [showConfirmPassword, setShowConfirmPassword] =
+        useState<boolean>(false)
     const { showSnackbar } = useContext(MessageContext) as IMessageContext
     const [validationOnChange, setValidationOnChange] = useState<boolean>(false)
 
@@ -39,19 +38,22 @@ const AddUser = ({
         validationSchema: userSchema,
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true)
-            register(values)
-                .then(() => {
-                    setSubmitting(false)
-                    setOpen(false)
-                    resetForm()
-                    showSnackbar('User Added')
-                    setValidationOnChange(false)
-                    onSuccess()
-                })
-                .catch((err) => {
-                    setSubmitting(false)
-                    showSnackbar(`${err?.response?.data?.message}`, true)
-                })
+            resetForm()
+            setOpen(false)
+            setSubmitting(false)
+            // register(values)
+            //     .then(() => {
+            //         setSubmitting(false)
+            //         setOpen(false)
+            //         resetForm()
+            //         showSnackbar('User Added')
+            //         setValidationOnChange(false)
+            //         onSuccess()
+            //     })
+            //     .catch((err) => {
+            //         setSubmitting(false)
+            //         showSnackbar(`${err?.response?.data?.message}`, true)
+            //     })
         },
         validateOnChange: validationOnChange,
         validateOnBlur: false,

@@ -4,7 +4,7 @@ import { Box, Grid } from '@mui/material'
 import TextInput from '../../../components/Input/TextInput'
 import Button from '../../../components/Buttons/Button'
 import { baseUserSchema } from './schema'
-import { updateUser } from '../../../services/user.services'
+// import { updateUser } from '../../../services/user.services'
 import { Modal } from '../../../components/Modal/Modal'
 import {
     MessageContext,
@@ -33,19 +33,19 @@ const EditUser = ({
         enableReinitialize: true,
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true)
-            updateUser(values)
-                .then(() => {
-                    setSubmitting(false)
-                    setOpen(false)
-                    resetForm()
-                    showSnackbar('User Updated')
-                    setValidationOnChange(false)
-                    onSuccess()
-                })
-                .catch((err) => {
-                    setSubmitting(false)
-                    showSnackbar(`${err?.response?.data?.message}`, true)
-                })
+            // updateUser(values)
+            //     .then(() => {
+            //         setSubmitting(false)
+            //         setOpen(false)
+            //         resetForm()
+            //         showSnackbar('User Updated')
+            //         setValidationOnChange(false)
+            //         onSuccess()
+            //     })
+            //     .catch((err) => {
+            //         setSubmitting(false)
+            //         showSnackbar(`${err?.response?.data?.message}`, true)
+            //     })
         },
         validateOnChange: validationOnChange,
         validateOnBlur: false,

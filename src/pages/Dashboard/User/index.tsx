@@ -9,6 +9,7 @@ import { DynamicTable } from '../../../components/Table/DynamicTable'
 // import { applySortFilter } from '../../../utils/searchHelper'
 import AddUser from './addUser'
 import EditUser from './editUser'
+import { usersMockup } from '../../../_mockup/users'
 import { columns } from '../../../columns/users'
 // import { getAllUsers, updateUser } from '../../../services/user.services'
 import {
@@ -158,7 +159,7 @@ const UserManagement = (): ReactNode => {
                                         setUserToBlockUnblock(item)
                                     }
                                 )}
-                                data={data}
+                                data={usersMockup}
                                 onRowClick={(item: IUserManagementData) => {
                                     handleRowClick(item)
                                 }}
