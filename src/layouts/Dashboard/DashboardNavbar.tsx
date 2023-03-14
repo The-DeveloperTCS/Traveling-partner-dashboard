@@ -2,18 +2,18 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import {
     AppBar,
-    Badge,
+    // Badge,
     Box,
     IconButton,
     Stack,
     Toolbar,
-    Tooltip,
+    // Tooltip,
     Typography,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useLocation } from 'react-router-dom'
 import AccountPopover from './AccountPopover'
-import BellIcon from '../../assets/images/icons/bell.png'
+// import BellIcon from '../../assets/images/icons/bell.png'
 import { FormatRouteTitle } from '../../utils/CommonFunction'
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
@@ -75,13 +75,13 @@ export const DashboardNavbar = (props: IDashboardNavbar): ReactNode => {
                     </Typography>
                 </Stack>
                 <Box sx={{ flexGrow: 1 }} />
-                <Tooltip title="Notifications">
+                {/* <Tooltip title="Notifications">
                     <IconButton>
                         <Badge color="primary" variant="dot">
                             <img src={BellIcon} alt="" width={24} />
                         </Badge>
                     </IconButton>
-                </Tooltip>
+                </Tooltip> */}
                 <AccountPopover />
             </Toolbar>
         </DashboardNavbarRoot>
