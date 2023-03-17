@@ -82,7 +82,7 @@ const BarChart = ({ data }: { data: any }): ReactNode => {
             },
         ],
     }
-    return <Bar height={50} options={options} data={chartData} />
+    return <Bar height={100} options={options} data={chartData} />
 }
 
 export default BarChart
