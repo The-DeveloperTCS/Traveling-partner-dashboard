@@ -35,7 +35,7 @@ function Login(): ReactNode {
             setSubmitting(true)
             console.log(values, 'VALUES')
             setSubmitting(false)
-            navigate('/dashboard')
+            navigate('/dashboard/dashboard')
         },
     })
 

@@ -74,8 +74,8 @@ const BarChart = ({ data }: { data: any }): ReactNode => {
                         (item.value === 'high' && success)
                 ),
                 borderColor: '#fff',
-                borderWidth: 1.5,
-                tension: 0.4,
+                borderWidth: 0.5,
+                tension: 0.5,
                 title: {
                     display: false,
                 },

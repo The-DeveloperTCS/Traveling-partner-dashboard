@@ -35,7 +35,7 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
     const baseUrl = '/dashboard'
     const items = [
         {
-            href: `${baseUrl}`,
+            href: `${baseUrl}/dashboard`,
             icon: null,
             title: 'Dashboard',
             childs: null,
