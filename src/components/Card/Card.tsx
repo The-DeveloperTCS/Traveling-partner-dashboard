@@ -4,16 +4,17 @@ import { Card as MuiCard, SxProps } from '@mui/material'
 interface ICard {
     children: ReactNode | ReactNode[]
     sx?: SxProps
+    noShadow?: boolean
 }
 
-const Card = ({ children, sx }: ICard): ReactNode => {
+const Card = ({ children, noShadow, sx }: ICard): ReactNode => {
     return (
         <MuiCard
             sx={{
                 p: 2,
                 borderRadius: 2,
                 border: '1px solid #E8ECF4',
-                boxShadow: 'none',
+                boxShadow: noShadow && 'none',
                 ...sx,
             }}
         >
