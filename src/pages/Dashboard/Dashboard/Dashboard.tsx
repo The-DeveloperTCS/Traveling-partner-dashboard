@@ -1,9 +1,11 @@
 import { PaymentsOutlined } from '@mui/icons-material'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined'
 import { Grid } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import Card from '../../../components/Card/Card'
 import BarChart from '../../../components/Chart/BarChart'
-import LineChart from '../../../components/Chart/LineChart'
 import PieChart from '../../../components/Chart/PieChart'
 import { DynamicTable } from '../../../components/Table/DynamicTable'
 import Widget from '../../../components/Widget/Widget'
@@ -14,19 +16,31 @@ import SubHeading from '../../../components/SubHeading/SubHeading'
 const data = [
     {
         value: 'low',
-        month: 1,
+        sale: 1000,
+    },
+    {
+        value: 'low',
+        sale: 500,
     },
     {
         value: 'medium',
-        month: 2,
+        sale: 1500,
     },
     {
         value: 'high',
-        month: 3,
+        sale: 4000,
+    },
+    {
+        value: 'low',
+        sale: 800,
     },
     {
         value: 'medium',
-        month: 4,
+        sale: 1400,
+    },
+    {
+        value: 'high',
+        sale: 1800,
     },
 ]
 
@@ -34,44 +48,49 @@ const Dashboard = (): ReactNode => {
     const [loading, setLoading] = useState<boolean>(false)
 
     return (
-        <Grid container spacing={2}>
+        <Grid
+            container
+            spacing={2}
+            alignItems="stretch"
+            justifyContent="stretch"
+        >
             <Grid item xs={12} sm={6} md={3}>
                 <Widget
-                    title="TOTAL COD COLLECTION"
+                    title="Daily Views"
                     value={25000}
-                    Icon={PaymentsOutlined}
+                    Icon={VisibilityOutlinedIcon}
                 />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
                 <Widget
-                    title="TOTAL COD COLLECTION"
+                    title="Sales"
                     value={0}
-                    Icon={PaymentsOutlined}
+                    Icon={ShoppingCartOutlinedIcon}
                 />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
                 <Widget
-                    title="TOTAL COD COLLECTION"
+                    title="Comments"
                     value={25000}
-                    Icon={PaymentsOutlined}
+                    Icon={CommentOutlinedIcon}
                 />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
                 <Widget
-                    title="TOTAL COD COLLECTION"
+                    title="Earnings"
                     value={25100}
                     Icon={PaymentsOutlined}
                 />
             </Grid>
-            <Grid item xs={12} md={6}>
-                <Card>
+            <Grid item xs={12} sm={5} md={4}>
+                <Card sx={{ height: '100%' }}>
                     <SubHeading>Stats</SubHeading>
-                    <LineChart height={100} />
+                    <PieChart data={data} />
                 </Card>
             </Grid>
-            <Grid item xs={12} md={6}>
-                <Card>
-                    <SubHeading>History</SubHeading>
+            <Grid item xs={12} sm={7} md={8}>
+                <Card sx={{ height: '100%' }}>
+                    <SubHeading>Sale</SubHeading>
                     <BarChart data={data} />
                 </Card>
             </Grid>
@@ -94,7 +113,6 @@ const Dashboard = (): ReactNode => {
             <Grid item xs={12} md={6}>
                 <Card>
                     <SubHeading>Record</SubHeading>
-                    <PieChart />
                 </Card>
             </Grid>
         </Grid>

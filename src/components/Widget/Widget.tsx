@@ -9,10 +9,7 @@ interface IProps {
 
 const Widget = ({ title, value, Icon }: IProps): ReactNode => {
     return (
-        <Card sx={{ p: 2 }}>
-            <Typography variant="body2" fontWeight={900} color="neutral.grey">
-                {title}
-            </Typography>
+        <Card sx={{ p: 4 }}>
             <Stack
                 direction="row"
                 justifyContent="space-between"
@@ -26,6 +23,9 @@ const Widget = ({ title, value, Icon }: IProps): ReactNode => {
                 </Typography>
                 <Icon sx={{ fontSize: '60px' }} color="success" />
             </Stack>
+            <Typography variant="body2" color="neutral.400" fontWeight={500}>
+                {title}
+            </Typography>
         </Card>
     )
 }

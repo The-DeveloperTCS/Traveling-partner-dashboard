@@ -9,27 +9,29 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js'
+import { useTheme } from '@mui/material'
 import { getMonthName } from '../../utils/DateTime'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const BarChart = ({ data }: { data: any }): ReactNode => {
+    const theme = useTheme()
     const options = {
         responsive: true,
         borderRadius: 5,
         categoryPercentage: 1,
         barPercentage: 1,
         plugins: {
-            tooltip: {
-                callbacks: {
-                    label: (yDatapoint) => {
-                        const grade =
-                            (yDatapoint.raw === 2500 && 'needs to improve') ||
-                            (yDatapoint.raw === 5000 && 'average') ||
-                            'strong'
-                        return ` ${grade}`
-                    },
-                },
-            },
+            // tooltip: {
+            //     callbacks: {
+            //         label: (yDatapoint) => {
+            //             const grade =
+            //                 (yDatapoint.raw === 2500 && 'needs to improve') ||
+            //                 (yDatapoint.raw === 5000 && 'average') ||
+            //                 'strong'
+            //             return ` ${grade}`
+            //         },
+            //     },
+            // },
             legend: {
                 display: false,
             },
@@ -53,20 +55,25 @@ const BarChart = ({ data }: { data: any }): ReactNode => {
             },
         },
     }
-    const success = '#E4F4E9'
-    const warning = '#FFF6E4'
-    const danger = '#F8E5E5'
+    const success = theme.palette.success.main
+    const warning = theme.palette.warning.main
+    const danger = theme.palette.error.main
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+    ]
+
     const chartData = {
-        labels: data?.map((item) => getMonthName(item.month - 1)),
+        labels,
         datasets: [
             {
-                label: 'grade',
-                data: data?.map(
-                    (item) =>
-                        (item.value === 'low' && 2500) ||
-                        (item.value === 'medium' && 5000) ||
-                        (item.value === 'high' && 7500)
-                ),
+                label: 'sale',
+                data: data.map((item) => item.sale),
                 backgroundColor: data?.map(
                     (item) =>
                         (item.value === 'low' && danger) ||
@@ -74,15 +81,15 @@ const BarChart = ({ data }: { data: any }): ReactNode => {
                         (item.value === 'high' && success)
                 ),
                 borderColor: '#fff',
-                borderWidth: 0.5,
-                tension: 0.5,
+                borderWidth: 3,
+                tension: 1.5,
                 title: {
                     display: false,
                 },
             },
         ],
     }
-    return <Bar height={100} options={options} data={chartData} />
+    return <Bar options={options} data={chartData} />
 }
 
 export default BarChart
