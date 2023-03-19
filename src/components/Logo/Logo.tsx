@@ -24,7 +24,7 @@ export const Logo = styled((props: ILogo) => {
                 <img
                     src={mainLogo}
                     alt="logo"
-                    width={align === 'horizontal' ? '50px' : width || 200}
+                    width={align === 'horizontal' ? '30px' : width || 200}
                 />
             </Card>
             <img

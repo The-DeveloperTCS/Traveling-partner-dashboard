@@ -155,7 +155,7 @@ export const NavItem = (props: INavItem): ReactNode => {
                         ? 'background.default'
                         : 'transparent',
                     borderRadius: '20px 0 0 20px',
-                    color: active ? 'neutral.900' : 'neutral.600',
+                    color: active ? 'neutral.900' : 'neutral.100',
                     fontWeight: 'fontWeightBold',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
@@ -167,13 +167,13 @@ export const NavItem = (props: INavItem): ReactNode => {
                     position: 'relative',
                     width: '100%',
                     '& .MuiButton-startIcon': {
-                        color: active ? 'neutral.100' : 'neutral.300',
+                        color: active ? 'neutral.900' : 'neutral.300',
                     },
                     '&:hover': {
                         backgroundColor: active
                             ? 'background.default'
                             : 'transparent',
-                        color: 'neutral.900',
+                        color: active ? 'neutral.900' : 'action.selected',
                     },
                     '&:after': {
                         content: "''",
