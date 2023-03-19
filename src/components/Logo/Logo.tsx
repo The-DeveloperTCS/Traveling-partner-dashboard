@@ -8,19 +8,29 @@ import Card from '../Card/Card'
 interface ILogo {
     variant?: 'dark' | 'light'
     width?: number
+    align?: 'vertical' | 'horizontal'
 }
 
 export const Logo = styled((props: ILogo) => {
-    const { variant, width } = props
+    const { variant, width, align } = props
     return (
-        <Stack justifyContent="center" alignItems="center" gap={1}>
-            <Card noShadow={variant === 'dark'}>
-                <img src={mainLogo} alt="logo" width={width || 200} />
+        <Stack
+            justifyContent="center"
+            alignItems="center"
+            gap={1}
+            direction={align === 'horizontal' ? 'row' : 'column'}
+        >
+            <Card noShadow={variant === 'dark'} sx={{ p: 1 }}>
+                <img
+                    src={mainLogo}
+                    alt="logo"
+                    width={align === 'horizontal' ? '50px' : width || 200}
+                />
             </Card>
             <img
                 src={variant === 'light' ? darkLogo : lightLogo}
                 alt="logo"
-                width={200}
+                width={align === 'horizontal' ? '100px' : 200}
             />
         </Stack>
     )
