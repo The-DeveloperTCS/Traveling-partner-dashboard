@@ -74,7 +74,7 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
             <div>
                 <Box sx={{ p: 3 }}>
                     <Link component={RouterLink} to="/">
-                        <Logo width={100} variant="dark" />
+                        <Logo width={100} variant="light" align="horizontal" />
                     </Link>
                 </Box>
             </div>
@@ -102,9 +102,10 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
                 open
                 PaperProps={{
                     sx: {
-                        backgroundColor: 'neutral.900',
+                        background: (theme) => theme.palette.gradient[100],
                         color: '#FFFFFF',
                         width: 280,
+                        borderRight: 'none !important',
                     },
                 }}
                 variant="permanent"
@@ -121,12 +122,15 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
             open={open}
             PaperProps={{
                 sx: {
-                    backgroundColor: 'neutral.900',
+                    background: (theme) => theme.palette.gradient[100],
                     color: '#FFFFFF',
                     width: 280,
+                    borderRight: 'none !important',
                 },
             }}
-            sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+            sx={{
+                zIndex: (theme) => theme.zIndex.appBar + 100,
+            }}
             variant="temporary"
         >
             {content}
