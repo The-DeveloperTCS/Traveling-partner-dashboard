@@ -1,1 +1,1 @@
-export const APP_NAME = 'STARTER KIT REACT'
+export const APP_NAME = 'Traveling Partner'
