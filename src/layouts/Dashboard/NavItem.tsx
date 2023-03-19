@@ -141,6 +141,7 @@ export const NavItem = (props: INavItem): ReactNode => {
                 display: 'flex',
                 mb: 1,
                 py: 0,
+                pl: 3,
             }}
             {...others}
         >
@@ -150,9 +151,11 @@ export const NavItem = (props: INavItem): ReactNode => {
                 startIcon={icon}
                 disableRipple
                 sx={{
-                    backgroundColor: active ? 'action.selected' : 'neutral.700',
-                    borderRadius: 0,
-                    color: active ? 'neutral.900' : 'neutral.400',
+                    backgroundColor: active
+                        ? 'background.default'
+                        : 'transparent',
+                    borderRadius: '20px 0 0 20px',
+                    color: active ? 'neutral.900' : 'neutral.600',
                     fontWeight: 'fontWeightBold',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
@@ -160,13 +163,45 @@ export const NavItem = (props: INavItem): ReactNode => {
                     py: 1.2,
                     textAlign: 'left',
                     textTransform: 'none',
+                    transition: 'all 0.5s ease',
+                    position: 'relative',
                     width: '100%',
                     '& .MuiButton-startIcon': {
                         color: active ? 'neutral.100' : 'neutral.300',
                     },
                     '&:hover': {
-                        backgroundColor: 'rgba(255,255,255, 0.08)',
-                        color: 'neutral.400',
+                        backgroundColor: active
+                            ? 'background.default'
+                            : 'transparent',
+                        color: 'neutral.900',
+                    },
+                    '&:after': {
+                        content: "''",
+                        position: 'absolute',
+                        backgroundColor: active
+                            ? ' primary.main'
+                            : 'transparent',
+                        right: 0,
+                        bottom: '-50px',
+                        height: '50px',
+                        width: '25px',
+                        borderTopRightRadius: '25px',
+                        boxShadow: active ? ' 0 -25px 0 0 #F9FAFC' : 'none',
+                        transition: 'all 0.3s ease',
+                    },
+                    '&:before': {
+                        content: "''",
+                        position: 'absolute',
+                        backgroundColor: active
+                            ? ' primary.main'
+                            : 'transparent',
+                        right: 0,
+                        top: '-50px',
+                        height: '50px',
+                        width: '25px',
+                        borderBottomRightRadius: '25px',
+                        boxShadow: active ? ' 0 25px 0px 0px #F9FAFC' : 'none',
+                        transition: 'all 0.3s linear',
                     },
                 }}
             >

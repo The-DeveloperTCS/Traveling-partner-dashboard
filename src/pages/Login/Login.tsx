@@ -1,19 +1,18 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {
-    Avatar,
     Box,
-    Checkbox,
-    FormControlLabel,
+    // Checkbox,
+    // FormControlLabel,
     Grid,
     TextField,
-    Typography,
     Theme,
 } from '@mui/material'
 import { Helmet } from 'react-helmet-async'
-import { LoadingButton } from '@mui/lab'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Logo } from '../../components/Logo/Logo'
+import Button from '../../components/Buttons/Button'
 
 function Login(): ReactNode {
     const navigate = useNavigate()
@@ -21,22 +20,22 @@ function Login(): ReactNode {
     const formik = useFormik({
         initialValues: {
             email: '',
-            password: '',
+            otp: '',
         },
         validationSchema: Yup.object({
             email: Yup.string()
                 .email('Must be a valid email')
                 .max(255)
                 .required('Email is required'),
-            password: Yup.string()
-                .min(8, 'Password is too short - should be 8 chars minimum.')
-                .required('Password is required'),
+            otp: Yup.string()
+                .min(8, 'OTP is too short - should be 8 chars minimum.')
+                .required('OTP is required'),
         }),
         onSubmit: async (values, { setSubmitting }) => {
             setSubmitting(true)
             console.log(values, 'VALUES')
             setSubmitting(false)
-            navigate('/dashboard')
+            navigate('/dashboard/dashboard')
         },
     })
 
@@ -58,9 +57,7 @@ function Login(): ReactNode {
                 }}
             >
                 <Grid item xs={12} sm={6} md={5} lg={3}>
-                    <Typography component="h1" variant="h5">
-                        Sign in - WELCOME TO TRAVELING PARTNER
-                    </Typography>
+                    <Logo width={100} variant="light" />
                     <Box
                         component="form"
                         onSubmit={formik.handleSubmit}
@@ -83,20 +80,19 @@ function Login(): ReactNode {
                             autoFocus
                         />
                         <TextField
-                            error={!!formik.errors.password}
-                            helperText={formik.errors.password}
+                            error={!!formik.errors.otp}
+                            helperText={formik.errors.otp}
                             margin="normal"
                             required
                             fullWidth
                             onChange={(event) => {
-                                formik.values.password = event.target.value
+                                formik.values.otp = event.target.value
                             }}
-                            label="Password"
+                            label="OTP"
                             type="password"
-                            id="password"
-                            autoComplete="current-password"
+                            id="otp"
                         />
-                        <Box textAlign="start">
+                        {/* <Box textAlign="start">
                             <FormControlLabel
                                 control={
                                     <Checkbox
@@ -106,13 +102,13 @@ function Login(): ReactNode {
                                 }
                                 label="Remember me"
                             />
-                        </Box>
-                        <LoadingButton
+                        </Box> */}
+                        <Button
                             loadingPosition="end"
                             type="submit"
                             size="large"
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{ mt: 3 }}
                             loading={formik.isSubmitting}
                             disabled={formik.isSubmitting}
                             fullWidth
@@ -120,7 +116,7 @@ function Login(): ReactNode {
                             {formik.isSubmitting
                                 ? 'Attempting Sign In'
                                 : 'Sign In'}
-                        </LoadingButton>
+                        </Button>
                     </Box>
                 </Grid>
             </Grid>

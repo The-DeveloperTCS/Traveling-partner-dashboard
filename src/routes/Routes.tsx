@@ -17,7 +17,7 @@ export default function Routes(): ReactNode {
             element: <PrivateRoute navLink="/" component={DashboardLayout} />,
             children: [
                 {
-                    path: '',
+                    path: 'dashboard',
                     element: <Dashboard />,
                 },
                 {

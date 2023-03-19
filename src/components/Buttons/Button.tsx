@@ -1,9 +1,14 @@
 import { LoadingButton, LoadingButtonProps } from '@mui/lab'
 
 const Button = (props: LoadingButtonProps): ReactNode => {
-    const { loading, children, ...rest } = props
+    const { loading, children, sx, ...rest } = props
     return (
-        <LoadingButton loading={loading} startIcon={<></>} {...rest}>
+        <LoadingButton
+            loading={loading}
+            startIcon={<></>}
+            {...rest}
+            sx={{ color: '#000', ...sx }}
+        >
             {children}
         </LoadingButton>
     )

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import { Theme as MuiTheme } from '@mui/material/styles'
 import { Box, Drawer, Link, useMediaQuery } from '@mui/material'
 import { useLocation, Link as RouterLink } from 'react-router-dom'
-import { Logo } from './Logo'
 import { NavItem } from './NavItem'
 import { LogoutItem } from './LogoutItem'
+import { Logo } from '../../components/Logo/Logo'
 
 interface IDashboardSidebar {
     open: boolean
@@ -35,7 +35,7 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
     const baseUrl = '/dashboard'
     const items = [
         {
-            href: `${baseUrl}`,
+            href: `${baseUrl}/dashboard`,
             icon: null,
             title: 'Dashboard',
             childs: null,
@@ -74,7 +74,7 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
             <div>
                 <Box sx={{ p: 3 }}>
                     <Link component={RouterLink} to="/">
-                        <Logo width={180} />
+                        <Logo width={100} variant="light" align="horizontal" />
                     </Link>
                 </Box>
             </div>
@@ -102,9 +102,10 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
                 open
                 PaperProps={{
                     sx: {
-                        backgroundColor: 'neutral.900',
+                        background: (theme) => theme.palette.gradient[100],
                         color: '#FFFFFF',
                         width: 280,
+                        borderRight: 'none !important',
                     },
                 }}
                 variant="permanent"
@@ -121,12 +122,15 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
             open={open}
             PaperProps={{
                 sx: {
-                    backgroundColor: 'neutral.900',
+                    background: (theme) => theme.palette.gradient[100],
                     color: '#FFFFFF',
                     width: 280,
+                    borderRight: 'none !important',
                 },
             }}
-            sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+            sx={{
+                zIndex: (theme) => theme.zIndex.appBar + 100,
+            }}
             variant="temporary"
         >
             {content}
