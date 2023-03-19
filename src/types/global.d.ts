@@ -254,9 +254,11 @@ declare module '@mui/material/styles/createPalette' {
     }
     export interface PaletteOptions {
         neutral: PaletteColor | colorNumber
+        gradient: PaletteColor | colorNumber
     }
     export interface Palette {
         neutral: PaletteColor | colorNumber
+        gradient: PaletteColor | colorNumber
     }
 }
 

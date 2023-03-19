@@ -140,7 +140,6 @@ export const theme = createTheme({
             },
         },
     },
-
     palette: {
         neutral: {
             100: '#F3F4F6',
@@ -152,6 +151,9 @@ export const theme = createTheme({
             700: '#374151',
             800: '#1F2937',
             900: '#111827',
+        },
+        gradient: {
+            100: 'linear-gradient(181.01deg, #FCE001 6.8%, #FDB813 86.49%)',
         },
         action: {
             active: '#6B7280',
