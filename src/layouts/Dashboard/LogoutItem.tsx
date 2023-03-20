@@ -34,7 +34,7 @@ export const LogoutItem = (): ReactNode => {
                 sx={{
                     backgroundColor: 'rgba(255,255,255, 0.08)',
                     borderRadius: 1,
-                    color: 'neutral.900',
+                    color: 'neutral.300',
                     fontWeight: 'fontWeightBold',
                     justifyContent: 'flex-start',
                     px: 3,
