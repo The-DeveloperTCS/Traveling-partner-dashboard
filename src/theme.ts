@@ -15,6 +15,22 @@ export const theme = createTheme({
             defaultProps: {
                 disableElevation: true,
             },
+            variants: [
+                {
+                    props: { variant: 'gradient' },
+                    style: {
+                        textTransform: 'none',
+                        borderRadius: '8px',
+                        color: '#000',
+                        background:
+                            'linear-gradient(181.01deg, #FCE001 6.8%, #FDB813 86.49%)',
+                        '&:hover': {
+                            background:
+                                'linear-gradient(181.01deg, #FCE001E6 6.8%, #FDB813E6 86.49%)',
+                        },
+                    },
+                },
+            ],
             styleOverrides: {
                 root: {
                     textTransform: 'none',

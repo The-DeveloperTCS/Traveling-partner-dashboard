@@ -265,3 +265,9 @@ declare module '@mui/material/styles/createPalette' {
 declare module '@emotion/react' {
     export interface Theme extends MuiTheme {}
 }
+
+declare module '@mui/material/Button' {
+    interface ButtonPropsVariantOverrides {
+        gradient: true
+    }
+}
