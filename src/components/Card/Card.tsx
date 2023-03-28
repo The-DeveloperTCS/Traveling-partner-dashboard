@@ -12,7 +12,6 @@ const Card = ({ children, noShadow, sx }: ICard): ReactNode => {
         <MuiCard
             sx={{
                 p: 2,
-                borderRadius: 2,
                 border: '1px solid #E8ECF4',
                 boxShadow: noShadow && 'none',
                 ...sx,

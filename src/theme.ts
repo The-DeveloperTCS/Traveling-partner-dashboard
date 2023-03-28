@@ -20,7 +20,7 @@ export const theme = createTheme({
                     props: { variant: 'gradient' },
                     style: {
                         textTransform: 'none',
-                        borderRadius: '8px',
+                        borderRadius: '20px',
                         color: '#000',
                         background:
                             'linear-gradient(181.01deg, #FCE001 6.8%, #FDB813 86.49%)',
@@ -227,7 +227,7 @@ export const theme = createTheme({
         },
     },
     shape: {
-        borderRadius: 8,
+        borderRadius: 20,
     },
     shadows: [
         'none',

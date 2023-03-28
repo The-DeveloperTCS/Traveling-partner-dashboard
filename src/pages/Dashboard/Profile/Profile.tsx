@@ -14,7 +14,7 @@ const Profile = (): ReactNode => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
-                <Card>
+                <Card sx={{ height: '100%' }}>
                     <SubHeading>States</SubHeading>
                     <BarChart data={data} />
                     <Box mt={2} />
@@ -23,7 +23,7 @@ const Profile = (): ReactNode => {
                 </Card>
             </Grid>
             <Grid item xs={12} md={8}>
-                <Card sx={{ p: 4 }}>
+                <Card sx={{ p: 4, height: '100%' }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <Stack
