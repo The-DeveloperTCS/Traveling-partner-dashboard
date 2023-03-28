@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { Modal } from './Modal'
 import Button from '../Buttons/Button'
 
@@ -11,20 +11,18 @@ const MessageModal = ({
 }: IModal): ReactNode => {
     return (
         <Modal title={title} open={open} handleClose={handleClose}>
-            <Typography component="h1" variant="h5" textAlign="center">
-                {children}
-            </Typography>
-            <Stack direction="row" justifyContent="center" gap={1}>
+            <Box>{children}</Box>
+            <Stack direction="row" justifyContent="flex-end" gap={1}>
                 <Button
                     variant="contained"
-                    color="secondary"
+                    color="error"
                     onClick={handleClose}
                     sx={{ width: 80 }}
                 >
                     Cancel
                 </Button>
                 <Button
-                    variant="contained"
+                    variant="gradient"
                     color="primary"
                     onClick={handleSubmit}
                     sx={{ width: 80 }}
