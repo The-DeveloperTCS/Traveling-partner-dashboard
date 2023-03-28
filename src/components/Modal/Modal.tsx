@@ -37,11 +37,7 @@ export const Modal = ({
             ) : null}
             {title ? (
                 <DialogTitle>
-                    <Typography
-                        fontFamily="Fredoka"
-                        variant="h4"
-                        sx={{ mb: 2 }}
-                    >
+                    <Typography variant="h4" sx={{ mb: 1 }}>
                         {title}
                     </Typography>
                 </DialogTitle>

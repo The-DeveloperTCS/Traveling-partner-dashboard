@@ -16,7 +16,7 @@ const Widget = ({ title, value, Icon }: IProps): ReactNode => {
                 alignItems="center"
                 color="primary.main"
             >
-                <Typography variant="h3" fontFamily="Fredoka" pt={2}>
+                <Typography variant="h3" fontFamily="Poppins" pt={2}>
                     {`${value < 0 ? '-' : ''}${nFormatter(
                         Math.abs(Number(value))
                     )}`}

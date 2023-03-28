@@ -29,7 +29,7 @@ const Protection = ({ children, protection }: Props): ReactNode => {
                 />
                 <Typography
                     variant="h4"
-                    fontFamily="Fredoka"
+                    fontFamily="Poppins"
                     color="primary.main"
                 >
                     Permission Denied!

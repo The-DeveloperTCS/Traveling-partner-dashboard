@@ -77,7 +77,7 @@ const Profile = (): ReactNode => {
                                 gap={2}
                             >
                                 {/* <Button variant="outlined">Change Password</Button> */}
-                                <Button variant="contained">Update</Button>
+                                <Button variant="gradient">Update</Button>
                             </Stack>
                         </Grid>
                     </Grid>

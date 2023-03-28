@@ -260,7 +260,7 @@ export const theme = createTheme({
         button: {
             fontWeight: 600,
         },
-        fontFamily: `Exo, Fredoka, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+        fontFamily: `Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
 			 Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"`,
         body1: {
             fontSize: '1rem',
