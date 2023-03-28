@@ -63,7 +63,7 @@ const columns = (
                     <Box>
                         <Button
                             color={item.isBlocked ? 'error' : 'warning'}
-                            variant="contained"
+                            variant={item.isBlocked ? 'contained' : 'gradient'}
                             sx={{ minWidth: 120 }}
                             onClick={(e: React.MouseEvent<HTMLElement>) =>
                                 openPopconfirm(e, item)

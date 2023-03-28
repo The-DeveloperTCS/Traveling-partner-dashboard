@@ -107,7 +107,7 @@ function Login(): ReactNode {
                             loadingPosition="end"
                             type="submit"
                             size="large"
-                            variant="contained"
+                            variant="gradient"
                             sx={{ mt: 3 }}
                             loading={formik.isSubmitting}
                             disabled={formik.isSubmitting}

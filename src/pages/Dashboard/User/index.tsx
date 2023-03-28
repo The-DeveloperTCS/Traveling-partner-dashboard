@@ -135,8 +135,7 @@ const UserManagement = (): ReactNode => {
             <Grid container spacing={3}>
                 <Grid item xs={12} sx={{ textAlign: 'right' }}>
                     <Button
-                        variant="contained"
-                        color="primary"
+                        variant="gradient"
                         startIcon={<PersonAddIcon />}
                         sx={{ minWidth: 150 }}
                         size="large"
@@ -202,8 +201,8 @@ const UserManagement = (): ReactNode => {
             >
                 <Typography>
                     Are you sure you want to
-                    {userToBlockUnblock?.isBlocked ? ' Unblock' : ' Block'} this
-                    user.
+                    {userToBlockUnblock?.isBlocked ? ' unblock' : ' block'} this
+                    user?
                 </Typography>
             </MessageModal>
         </Protection>

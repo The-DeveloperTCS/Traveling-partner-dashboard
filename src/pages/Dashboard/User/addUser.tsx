@@ -191,7 +191,7 @@ const AddUser = ({
                             <Button
                                 loadingPosition="start"
                                 type="submit"
-                                variant="contained"
+                                variant="gradient"
                                 color="primary"
                                 sx={{ ml: 1, width: 120 }}
                                 loading={formik.isSubmitting}
