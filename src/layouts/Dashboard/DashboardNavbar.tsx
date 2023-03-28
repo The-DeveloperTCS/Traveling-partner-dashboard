@@ -69,7 +69,6 @@ export const DashboardNavbar = (props: IDashboardNavbar): ReactNode => {
                     <Typography
                         variant="h4"
                         color="text.primary"
-                        fontFamily="Poppins"
                         sx={{ textTransform: 'capitalize', ml: 2 }}
                     >
                         {FormatRouteTitle(location?.pathname)}
