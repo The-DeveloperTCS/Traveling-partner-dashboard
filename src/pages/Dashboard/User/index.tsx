@@ -194,7 +194,7 @@ const UserManagement = (): ReactNode => {
                 open={!!userToBlockUnblock}
                 title={`${
                     userToBlockUnblock?.isBlocked ? ' Unblock' : ' Block'
-                } User?`}
+                } User`}
                 handleClose={() => setUserToBlockUnblock(null)}
                 handleSubmit={() => handleBlockUnblock(userToBlockUnblock)}
                 loading={isLoadingUserBlockUnblock}
