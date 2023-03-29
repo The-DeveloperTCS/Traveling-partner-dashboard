@@ -1,17 +1,13 @@
 import { Grid, Typography } from '@mui/material'
-import { useEffect, useMemo, useState, useContext } from 'react'
+import { useMemo, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
-// import { AxiosResponse } from 'axios'
 import Protection from '../../../roles/protection/Protection'
 import Button from '../../../components/Buttons/Button'
 import { DynamicTable } from '../../../components/Table/DynamicTable'
-// import { applySortFilter } from '../../../utils/searchHelper'
 import AddUser from './AddUser'
-import EditUser from './EditUser'
 import { usersMockup } from '../../../_mockup/users'
 import { columns } from '../../../columns/users'
-// import { getAllUsers, updateUser } from '../../../services/user.services'
 import {
     IMessageContext,
     MessageContext,
@@ -22,7 +18,6 @@ const UserManagement = (): ReactNode => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
-    const [editModalOpen, setEditModalOpen] = useState<boolean>(false)
     const [editUser, setEditUser] = useState<IUserManagementData>(null)
     const [data, setData] = useState<IUserManagementData[]>([])
     const { showSnackbar } = useContext(MessageContext) as IMessageContext
@@ -119,7 +114,7 @@ const UserManagement = (): ReactNode => {
 
     const handleRowClick = (item: IUserManagementData): void => {
         setEditUser(item)
-        setEditModalOpen(true)
+        navigate(`/dashboard/user-management/${item.id}`)
     }
 
     const handleAddUser = (): void => {
@@ -127,7 +122,6 @@ const UserManagement = (): ReactNode => {
     }
     const handleClose = (): void => {
         setOpen(false)
-        setEditModalOpen(false)
     }
 
     return (
@@ -181,15 +175,6 @@ const UserManagement = (): ReactNode => {
                 // onSuccess={getData}
             />
 
-            {editUser !== null && (
-                <EditUser
-                    open={editModalOpen}
-                    setOpen={setEditModalOpen}
-                    handleClose={handleClose}
-                    item={editUser}
-                    // onSuccess={getData}
-                />
-            )}
             <MessageModal
                 open={!!userToBlockUnblock}
                 title={`${
