@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import { Box, Grid } from '@mui/material'
 import TextInput from '../../../components/Input/TextInput'
 import Button from '../../../components/Buttons/Button'
-import { baseUserSchema } from './schema'
+import { baseUserSchema } from './Schema'
 // import { updateUser } from '../../../services/user.services'
 import { Modal } from '../../../components/Modal/Modal'
 import {
