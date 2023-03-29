@@ -1,17 +1,13 @@
 import { Grid, Typography } from '@mui/material'
-import { useEffect, useMemo, useState, useContext } from 'react'
+import { useMemo, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
-// import { AxiosResponse } from 'axios'
 import Protection from '../../../roles/protection/Protection'
 import Button from '../../../components/Buttons/Button'
 import { DynamicTable } from '../../../components/Table/DynamicTable'
-// import { applySortFilter } from '../../../utils/searchHelper'
-import AddUser from './addUser'
-import EditUser from './editUser'
+import AddUser from './AddUser'
 import { usersMockup } from '../../../_mockup/users'
 import { columns } from '../../../columns/users'
-// import { getAllUsers, updateUser } from '../../../services/user.services'
 import {
     IMessageContext,
     MessageContext,
@@ -22,7 +18,6 @@ const UserManagement = (): ReactNode => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
-    const [editModalOpen, setEditModalOpen] = useState<boolean>(false)
     const [editUser, setEditUser] = useState<IUserManagementData>(null)
     const [data, setData] = useState<IUserManagementData[]>([])
     const { showSnackbar } = useContext(MessageContext) as IMessageContext
@@ -119,7 +114,7 @@ const UserManagement = (): ReactNode => {
 
     const handleRowClick = (item: IUserManagementData): void => {
         setEditUser(item)
-        setEditModalOpen(true)
+        navigate(`/dashboard/user-management/${item.id}`)
     }
 
     const handleAddUser = (): void => {
@@ -127,7 +122,6 @@ const UserManagement = (): ReactNode => {
     }
     const handleClose = (): void => {
         setOpen(false)
-        setEditModalOpen(false)
     }
 
     return (
@@ -135,8 +129,7 @@ const UserManagement = (): ReactNode => {
             <Grid container spacing={3}>
                 <Grid item xs={12} sx={{ textAlign: 'right' }}>
                     <Button
-                        variant="contained"
-                        color="primary"
+                        variant="gradient"
                         startIcon={<PersonAddIcon />}
                         sx={{ minWidth: 150 }}
                         size="large"
@@ -182,28 +175,19 @@ const UserManagement = (): ReactNode => {
                 // onSuccess={getData}
             />
 
-            {editUser !== null && (
-                <EditUser
-                    open={editModalOpen}
-                    setOpen={setEditModalOpen}
-                    handleClose={handleClose}
-                    item={editUser}
-                    // onSuccess={getData}
-                />
-            )}
             <MessageModal
                 open={!!userToBlockUnblock}
                 title={`${
                     userToBlockUnblock?.isBlocked ? ' Unblock' : ' Block'
-                } User?`}
+                } User`}
                 handleClose={() => setUserToBlockUnblock(null)}
                 handleSubmit={() => handleBlockUnblock(userToBlockUnblock)}
                 loading={isLoadingUserBlockUnblock}
             >
                 <Typography>
                     Are you sure you want to
-                    {userToBlockUnblock?.isBlocked ? ' Unblock' : ' Block'} this
-                    user.
+                    {userToBlockUnblock?.isBlocked ? ' unblock' : ' block'} this
+                    user?
                 </Typography>
             </MessageModal>
         </Protection>

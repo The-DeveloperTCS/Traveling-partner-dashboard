@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
+import _ from 'lodash'
 import PropTypes from 'prop-types'
 import { Theme as MuiTheme } from '@mui/material/styles'
 import { Box, Drawer, Link, useMediaQuery } from '@mui/material'
@@ -7,6 +8,7 @@ import { useLocation, Link as RouterLink } from 'react-router-dom'
 import { NavItem } from './NavItem'
 import { LogoutItem } from './LogoutItem'
 import { Logo } from '../../components/Logo/Logo'
+import { IUserContext, UserContext } from '../../context/UserContext'
 
 interface IDashboardSidebar {
     open: boolean
@@ -22,6 +24,9 @@ interface IDashboardSidebarItem {
 }
 
 export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
+    const {
+        data: { user },
+    } = useContext(UserContext) as IUserContext
     const { open, onClose } = props
     const router = useLocation()
     const lgUp = useMediaQuery(
@@ -80,15 +85,18 @@ export const DashboardSidebar = (props: IDashboardSidebar): ReactNode => {
             </div>
             <Box sx={{ flexGrow: 1 }}>
                 {items.map((item: IDashboardSidebarItem): ReactNode => {
-                    return (
-                        <NavItem
-                            key={item.title}
-                            icon={item.icon}
-                            href={item.href}
-                            title={item.title}
-                            childs={item.childs}
-                        />
-                    )
+                    if (_.includes(item.protection, user?.role)) {
+                        return (
+                            <NavItem
+                                key={item.title}
+                                icon={item.icon}
+                                href={item.href}
+                                title={item.title}
+                                childs={item.childs}
+                            />
+                        )
+                    }
+                    return <></>
                 })}
             </Box>
             <LogoutItem />

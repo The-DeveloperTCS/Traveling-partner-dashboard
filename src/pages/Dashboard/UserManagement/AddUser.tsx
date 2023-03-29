@@ -7,7 +7,7 @@ import TextInput from '../../../components/Input/TextInput'
 import SelectInput from '../../../components/Input/SelectInput'
 import Button from '../../../components/Buttons/Button'
 import roles from '../../../roles/roles.json'
-import { userSchema } from './schema'
+import { userSchema } from './Schema'
 // import { register } from '../../../services/user.services'
 import { Modal } from '../../../components/Modal/Modal'
 import {
@@ -191,7 +191,7 @@ const AddUser = ({
                             <Button
                                 loadingPosition="start"
                                 type="submit"
-                                variant="contained"
+                                variant="gradient"
                                 color="primary"
                                 sx={{ ml: 1, width: 120 }}
                                 loading={formik.isSubmitting}

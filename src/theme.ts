@@ -15,6 +15,22 @@ export const theme = createTheme({
             defaultProps: {
                 disableElevation: true,
             },
+            variants: [
+                {
+                    props: { variant: 'gradient' },
+                    style: {
+                        textTransform: 'none',
+                        borderRadius: '20px',
+                        color: '#000',
+                        background:
+                            'linear-gradient(181.01deg, #FCE001 6.8%, #FDB813 86.49%)',
+                        '&:hover': {
+                            background:
+                                'linear-gradient(181.01deg, #FCE001E6 6.8%, #FDB813E6 86.49%)',
+                        },
+                    },
+                },
+            ],
             styleOverrides: {
                 root: {
                     textTransform: 'none',
@@ -211,7 +227,7 @@ export const theme = createTheme({
         },
     },
     shape: {
-        borderRadius: 8,
+        borderRadius: 20,
     },
     shadows: [
         'none',
@@ -244,7 +260,7 @@ export const theme = createTheme({
         button: {
             fontWeight: 600,
         },
-        fontFamily: `Exo, Fredoka, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+        fontFamily: `Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
 			 Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"`,
         body1: {
             fontSize: '1rem',

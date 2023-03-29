@@ -4,7 +4,8 @@ import { Navigate, useRoutes } from 'react-router-dom'
 import { DashboardLayout } from '../layouts/Dashboard/DashboardLayout'
 import Dashboard from '../pages/Dashboard/Dashboard/Dashboard'
 import Profile from '../pages/Dashboard/Profile/Profile'
-import UserManagement from '../pages/Dashboard/User'
+import UserManagement from '../pages/Dashboard/UserManagement'
+import UserDetail from '../pages/Dashboard/UserManagement/Detail.tsx'
 import Login from '../pages/Login/Login'
 import NotFound from '../pages/NotFound/NotFound'
 
@@ -23,6 +24,10 @@ export default function Routes(): ReactNode {
                 {
                     path: 'user-management',
                     element: <UserManagement />,
+                },
+                {
+                    path: 'user-management/:id',
+                    element: <UserDetail />,
                 },
                 {
                     path: 'profile',

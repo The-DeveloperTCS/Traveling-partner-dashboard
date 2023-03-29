@@ -48,3 +48,34 @@ export const usersMockup = [
             'https://images.unsplash.com/photo-1511424187101-2aaa60069357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9ob2dpcmx8ZW58MHx8MHx8&w=1000&q=80',
     },
 ]
+
+export const historyMockup = [
+    {
+        id: '1',
+        createdAt: '12-march-2023',
+        completed: 5,
+        cancel: 1,
+        pending: 3,
+    },
+    {
+        id: '2',
+        createdAt: '12-march-2023',
+        completed: 5,
+        cancel: 1,
+        pending: 3,
+    },
+    {
+        id: '3',
+        createdAt: '12-march-2023',
+        completed: 5,
+        cancel: 1,
+        pending: 3,
+    },
+    {
+        id: '4',
+        createdAt: '12-march-2023',
+        completed: 5,
+        cancel: 1,
+        pending: 3,
+    },
+]

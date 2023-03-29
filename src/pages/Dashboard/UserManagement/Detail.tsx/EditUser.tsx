@@ -1,23 +1,18 @@
 import React, { useContext, useState } from 'react'
 import { useFormik } from 'formik'
 import { Box, Grid } from '@mui/material'
-import TextInput from '../../../components/Input/TextInput'
-import Button from '../../../components/Buttons/Button'
-import { baseUserSchema } from './schema'
+import TextInput from '../../../../components/Input/TextInput'
+import Button from '../../../../components/Buttons/Button'
+import { baseUserSchema } from '../Schema'
 // import { updateUser } from '../../../services/user.services'
-import { Modal } from '../../../components/Modal/Modal'
 import {
     MessageContext,
     IMessageContext,
-} from '../../../context/MessageContext'
+} from '../../../../context/MessageContext'
+import Card from '../../../../components/Card/Card'
+import SubHeading from '../../../../components/SubHeading/SubHeading'
 
-const EditUser = ({
-    open,
-    setOpen,
-    handleClose,
-    item,
-    onSuccess,
-}: IItemProps): ReactNode => {
+const EditUser = ({ item }): ReactNode => {
     const { showSnackbar } = useContext(MessageContext) as IMessageContext
     const [validationOnChange, setValidationOnChange] = useState<boolean>(false)
 
@@ -51,12 +46,11 @@ const EditUser = ({
         validateOnBlur: false,
     })
     const handleCancel = (): void => {
-        handleClose()
         formik.resetForm()
         setValidationOnChange(false)
     }
     return (
-        <Modal open={open} title="Edit User" handleClose={handleClose}>
+        <Card>
             <Box
                 component="form"
                 onSubmit={formik.handleSubmit}
@@ -141,7 +135,7 @@ const EditUser = ({
                     </Grid>
                 </Grid>
             </Box>
-        </Modal>
+        </Card>
     )
 }
 

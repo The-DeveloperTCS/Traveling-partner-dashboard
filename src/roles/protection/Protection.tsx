@@ -27,11 +27,7 @@ const Protection = ({ children, protection }: Props): ReactNode => {
                     fontSize="large"
                     sx={{ color: (theme) => theme.palette.secondary.main }}
                 />
-                <Typography
-                    variant="h4"
-                    fontFamily="Fredoka"
-                    color="primary.main"
-                >
+                <Typography variant="h4" color="primary.main">
                     Permission Denied!
                 </Typography>
                 <Typography variant="body1">
