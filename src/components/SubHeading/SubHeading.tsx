@@ -3,7 +3,7 @@ import React from 'react'
 
 const SubHeading = ({ children }): ReactNode => {
     return (
-        <Typography variant="subtitle1" pb={2}>
+        <Typography variant="h6" pb={2}>
             {children}
         </Typography>
     )
