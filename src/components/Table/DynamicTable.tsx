@@ -48,7 +48,7 @@ export interface IDynamicTable<T> {
     onRowClick?: (item: T) => void
     onRowDelete?: (item: T) => void
     columns: IColumn[]
-    isLoading: boolean
+    isLoading?: boolean
     limit?: number
     page?: number
     total?: number
