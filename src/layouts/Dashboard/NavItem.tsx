@@ -18,7 +18,7 @@ interface INavItemChildren {
 }
 interface INavItem {
     href: string
-    icon: ReactNode
+    icon?: ReactNode | null
     title: string
     childs: INavItemChildren[] | null
 }

@@ -28,7 +28,6 @@ interface IDashboardNavbar {
 export const DashboardNavbar = (props: IDashboardNavbar): ReactNode => {
     const { onSidebarOpen, ...rest } = props
     const location = useLocation()
-    console.log('location', location)
 
     return (
         <DashboardNavbarRoot

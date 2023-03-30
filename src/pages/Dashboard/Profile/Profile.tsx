@@ -7,7 +7,7 @@ import Button from '../../../components/Buttons/Button'
 import TextInput from '../../../components/Input/TextInput'
 import SubHeading from '../../../components/SubHeading/SubHeading'
 import BarChart from '../../../components/Chart/BarChart'
-import { data } from '../../../_mockup/chart'
+import { chartsData } from '../../../_mockup/chart'
 import LineChart from '../../../components/Chart/LineChart'
 import Protection from '../../../roles/protection/Protection'
 
@@ -18,7 +18,7 @@ const Profile = (): ReactNode => {
                 <Grid item xs={12} md={4}>
                     <Card sx={{ height: '100%' }}>
                         <SubHeading>States</SubHeading>
-                        <BarChart data={data} />
+                        <BarChart data={chartsData} />
                         <Box mt={2} />
                         <SubHeading>History</SubHeading>
                         <LineChart height={200} />
