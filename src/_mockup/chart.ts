@@ -1,4 +1,4 @@
-export const data = [
+export const chartsData = [
     {
         value: 'low',
         sale: 1000,
